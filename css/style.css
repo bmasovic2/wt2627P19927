@@ -1,0 +1,469 @@
+
+:root {
+  --pozadina: #f6f1fb;
+  --bijela: #ffffff;
+  --svijetla: #fdf3d6;
+  --tekst: #1f1033;
+  --sporedni-tekst: #4d4262;
+  --ivica: #cbbfdc;
+  --glavna: #552583;
+  --tekst-dugmeta: #ffffff;
+  --hover: #3d1a5e;
+  --greska: #b3261e;
+  --uspjeh: #1a7a3c;
+  --fokus: #0b57d0;
+  --zaglavlje-tabele: #f4dc94;
+  --akcent: #fdb927;
+  --sjenka: rgba(0, 0, 0, 0.25);
+
+  --razmak-mali: 0.25rem;
+  --razmak: 0.5rem;
+  --razmak-srednji: 0.75rem;
+  --razmak-veliki: 1rem;
+  --razmak-veci: 1.5rem;
+
+  --font: Arial, sans-serif;
+  --velicina-teksta: 1rem;
+  --velicina-malog-teksta: 0.9rem;
+  --velicina-velikog-teksta: 1.75rem;
+  --visina-linije: 1.5;
+
+  --debljina-ivice: 1px;
+  --debljina-jace-ivice: 2px;
+  --debljina-akcenta: 4px;
+  --zaobljenje: 5px;
+  --zaobljenje-kartice: 8px;
+  --sirina-sidebar: 17rem;
+  --sirina-kartice: 16rem;
+  --sirina-menija: 12rem;
+  --visina-tabele: 22rem;
+  --sirina-tabele: 36rem;
+
+  --sloj-zaglavlja: 1;
+  --sloj-menija: 2;
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+
+  :root {
+    --pozadina: #140a22;
+    --bijela: #20123a;
+    --svijetla: #2d1a52;
+    --tekst: #f3ecfb;
+    --sporedni-tekst: #c8badf;
+    --ivica: #604b7e;
+    --glavna: #fdb927;
+    --tekst-dugmeta: #1a0b2e;
+    --hover: #ffd36b;
+    --greska: #ff8f86;
+    --uspjeh: #74e0a0;
+    --fokus: #8ab4ff;
+    --zaglavlje-tabele: #3a2466;
+    --sjenka: rgba(0, 0, 0, 0.7);
+  }
+}
+
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--sirina-sidebar);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "main aside"
+    "footer footer";
+
+  gap: var(--razmak-veliki);
+  min-height: 100vh;
+  margin: 0;
+  background: var(--pozadina);
+  color: var(--tekst);
+  font-family: var(--font);
+  font-size: var(--velicina-teksta);
+  line-height: var(--visina-linije);
+
+}
+
+
+
+h1, h2, h3 {
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+a {
+  color: var(--glavna);
+}
+
+.skip-link {
+  position: absolute;
+
+  top: var(--razmak);
+  left: var(--razmak);
+  z-index: var(--sloj-menija);
+  padding: var(--razmak) var(--razmak-veliki);
+  color: var(--tekst-dugmeta);
+  background: var(--glavna);
+  border-radius: var(--zaobljenje);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 2px;
+}
+
+header {
+  grid-area: header;
+  position: relative;
+  z-index: var(--sloj-zaglavlja);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: var(--razmak-veliki);
+  padding: var(--razmak-veliki);
+  background: var(--glavna);
+  color: var(--tekst-dugmeta);
+  border-bottom: var(--debljina-akcenta) solid var(--akcent);
+}
+
+header h1 {
+  margin: 0;
+  font-size: var(--velicina-velikog-teksta);
+}
+
+
+
+
+
+
+main {
+  grid-area: main;
+  min-width: 0;
+  padding-left: var(--razmak-veliki);
+}
+
+aside {
+  grid-area: aside;
+  min-width: 0;
+  padding-right: var(--razmak-veliki);
+}
+
+
+
+main section, aside section {
+  margin-bottom: var(--razmak-veliki);
+  padding: var(--razmak-veliki);
+  background: var(--bijela);
+  border: var(--debljina-ivice) solid var(--ivica);
+
+  border-radius: var(--zaobljenje-kartice);
+}
+
+main section h2:first-child, aside section h2:first-child {
+  margin-top: 0;
+}
+
+footer {
+  grid-area: footer;
+  padding: var(--razmak-veliki);
+  background: var(--bijela);
+
+  border-top: var(--debljina-ivice) solid var(--ivica);
+  color: var(--sporedni-tekst);
+}
+
+
+footer p {
+  margin: 0;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--razmak);
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  display: block;
+  padding: var(--razmak);
+  color: var(--tekst-dugmeta);
+  text-decoration: none;
+  border-radius: var(--zaobljenje);
+}
+
+.nav-list a:hover {
+  background: var(--hover);
+}
+
+.glavna-navigacija {
+  margin-left: auto;
+}
+
+
+.profil {
+  position: relative;
+}
+
+
+.profil summary {
+  padding: var(--razmak) var(--razmak-veliki);
+  border: var(--debljina-jace-ivice) solid var(--tekst-dugmeta);
+  border-radius: var(--zaobljenje);
+  cursor: pointer;
+  list-style: none;
+}
+
+.profil summary::after {
+  content: " ▼";
+}
+
+.profil details[open] summary::after {
+  content: " ▲";
+}
+
+
+
+
+.profil-meni {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: var(--sloj-menija);
+  width: var(--sirina-menija);
+  max-width: 90vw;
+  margin: 0;
+  padding: var(--razmak) 0;
+
+  background: var(--bijela);
+  border: var(--debljina-ivice) solid var(--ivica);
+  border-radius: var(--zaobljenje);
+  box-shadow: 0 var(--razmak) var(--razmak-veliki) var(--sjenka);
+  list-style: none;
+}
+
+.profil details::details-content {
+  content-visibility: visible;
+}
+
+.profil:hover .profil-meni,
+.profil details[open] .profil-meni {
+  display: block;
+}
+
+.profil-meni a {
+  display: block;
+  padding: var(--razmak) var(--razmak-veliki);
+  color: var(--tekst);
+  text-decoration: none;
+}
+
+.profil-meni a:hover {
+  background: var(--svijetla);
+}
+
+
+
+
+.kartice {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--sirina-kartice)), 1fr));
+  gap: var(--razmak-veliki);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+
+.kartice li {
+  min-width: 0;
+}
+
+.kartica {
+  min-width: 0;
+  padding: var(--razmak-veliki);
+  background: var(--svijetla);
+
+  border: var(--debljina-ivice) solid var(--ivica);
+  border-left: var(--debljina-akcenta) solid var(--akcent);
+
+  border-radius: var(--zaobljenje-kartice);
+  overflow-wrap: anywhere;
+  transition: transform 150ms ease, filter 150ms ease;
+}
+
+.kartice li:first-child .kartica:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 var(--razmak) var(--razmak-veliki) var(--sjenka));
+}
+
+.kartica h3 {
+  margin-top: 0;
+}
+
+.vrijednost {
+  font-size: var(--velicina-velikog-teksta);
+  font-weight: bold;
+}
+
+
+
+
+.polje {
+  margin-bottom: var(--razmak-veliki);
+}
+
+.polje label {
+  display: block;
+  margin-bottom: var(--razmak-mali);
+  font-weight: bold;
+}
+
+
+
+.polje input, .polje select {
+  width: 100%;
+  max-width: 28rem;
+  padding: var(--razmak-srednji);
+  color: var(--tekst);
+  background: var(--pozadina);
+
+  border: var(--debljina-jace-ivice) solid var(--ivica);
+  border-radius: var(--zaobljenje);
+  font: inherit;
+}
+
+.pomoc {
+  display: block;
+  color: var(--sporedni-tekst);
+  font-size: var(--velicina-malog-teksta);
+}
+
+.greska {
+  display: none;
+  color: var(--greska);
+  font-size: var(--velicina-malog-teksta);
+}
+
+
+
+.polje input:user-invalid, .polje select:user-invalid {
+  border-color: var(--greska);
+}
+
+.polje input:user-invalid ~ .greska,
+.polje select:user-invalid ~ .greska {
+  display: block;
+}
+
+
+
+.polje input:valid, .polje select:valid {
+  border-color: var(--uspjeh);
+}
+
+.checkbox-polje {
+  display: flex;
+  align-items: center;
+  gap: var(--razmak);
+}
+
+button {
+  padding: var(--razmak-srednji) var(--razmak-veci);
+
+  color: var(--tekst-dugmeta);
+  background: var(--glavna);
+  border: var(--debljina-jace-ivice) solid var(--glavna);
+  border-radius: var(--zaobljenje);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--hover);
+}
+
+
+
+.tabela-scroll {
+  max-height: var(--visina-tabele);
+  margin: 0;
+  overflow: auto;
+
+  border: var(--debljina-ivice) solid var(--ivica);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+caption {
+  padding: var(--razmak-srednji);
+  font-weight: bold;
+  text-align: left;
+}
+
+
+
+th, td {
+  padding: var(--razmak) var(--razmak-srednji);
+  border-bottom: var(--debljina-ivice) solid var(--ivica);
+  text-align: left;
+  white-space: nowrap;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: var(--zaglavlje-tabele);
+}
+
+
+
+
+
+@media (max-width: 768px) {
+
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+
+    grid-template-areas:
+      "header"
+      "main"
+      "aside"
+      "footer";
+  }
+
+  main {
+    padding: 0 var(--razmak-veliki);
+  }
+
+  aside {
+    padding: 0 var(--razmak-veliki);
+  }
+
+  table {
+    min-width: var(--sirina-tabele);
+  }
+}
