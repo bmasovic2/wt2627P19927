@@ -38,6 +38,7 @@
   --sirina-menija: 12rem;
   --visina-tabele: 22rem;
   --sirina-tabele: 36rem;
+  --trajanje-animacije: 1.5s;
 
   --sloj-zaglavlja: 1;
   --sloj-menija: 2;
@@ -436,6 +437,45 @@ thead th {
   position: sticky;
   top: 0;
   background: var(--zaglavlje-tabele);
+}
+
+/* Spirala 2: dinamički sadržaj tabele i poruke */
+
+td[data-polje="energent"] {
+  text-transform: capitalize;
+}
+
+td button {
+  padding: var(--razmak-mali) var(--razmak);
+}
+
+/* Klasa --new dodaje se novom redu na 2 sekunde (app.js) */
+tr.\--new {
+  animation: novi-red var(--trajanje-animacije) ease-out;
+}
+
+@keyframes novi-red {
+  from {
+    background-color: var(--akcent);
+  }
+
+  to {
+    background-color: transparent;
+  }
+}
+
+.poruke {
+  margin-top: var(--razmak-veliki);
+  font-weight: bold;
+  white-space: pre-line;
+}
+
+.poruke[data-stanje="uspjeh"] {
+  color: var(--uspjeh);
+}
+
+.poruke[data-stanje="greska"] {
+  color: var(--greska);
 }
 
 

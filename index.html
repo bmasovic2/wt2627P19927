@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTrack</title>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+  <a class="skip-link" href="#glavni-sadrzaj">Preskoči na glavni sadržaj</a>
+
+  <header>
+    <h1>EcoTrack</h1>
+
+    <nav class="profil">
+      <details>
+
+        <summary>Korisnički profil</summary>
+
+        <ul class="profil-meni">
+          <li><a href="#moj-profil">Moj profil</a></li>
+          <li><a href="#postavke-racuna">Postavke računa</a></li>
+          <li><a href="#historija">Moje aktivnosti</a></li>
+        </ul>
+
+      </details>
+    </nav>
+
+    <nav class="glavna-navigacija">
+
+      <ul class="nav-list">
+        <li><a href="#pregled">Pregled</a></li>
+        <li><a href="#unos">Novo mjerenje</a></li>
+        <li><a href="#historija">Historija</a></li>
+      </ul>
+    
+    </nav>
+  </header>
+
+  <main id="glavni-sadrzaj">
+
+    <section id="pregled">
+      <h2>Pregled</h2>
+
+      <ul class="kartice">
+        <li>
+          <article class="kartica" data-testid="kartica-emisija">
+            <h3>Ukupna emisija CO2 (kg)</h3>
+            <p class="vrijednost">1.992,70 t</p>
+          </article>
+        </li>
+
+        <li>
+          <article class="kartica" data-testid="kartica-usteda">
+            <h3>Ušteda energije (kg CO2)</h3>
+            <p class="vrijednost">27,23 %</p>
+          </article>
+        </li>
+
+        <li>
+          <article class="kartica" data-testid="kartica-status">
+            <h3>Status postrojenja: Donaudampfschifffahrtsgesellschaftsdirektion</h3>
+            <p class="vrijednost">Tip statusa</p>
+          </article>
+        </li>
+
+      </ul>
+    </section>
+
+    <section id="unos">
+
+      <h2>Unos novog mjerenja</h2>
+      <p>Polja označena zvjezdicom (*) su obavezna.</p>
+
+      <form action="#" method="get" novalidate data-testid="forma">
+        <p class="polje">
+
+          <label for="energent">Energent *</label>
+
+          <select id="energent" name="energent" data-testid="energent" required aria-describedby="energent-greska">
+            <option value="" selected disabled>Odaberite energent</option>
+            <option value="struja">Struja</option>
+            <option value="plin">Plin</option>
+            <option value="voda">Voda</option>
+          </select>
+
+          <span class="greska" id="energent-greska">Odaberite energent.</span>
+
+        </p>
+
+        <p class="polje">
+          <label for="kolicina">Količina potrošnje *</label>
+          <input type="number" id="kolicina" name="kolicina" data-testid="kolicina" min="0.01" step="0.01" required aria-describedby="kolicina-pomoc kolicina-greska">
+          <span class="pomoc" id="kolicina-pomoc">Unesite pozitivan broj sa najviše dvije decimale, npr. 67.67</span>
+          <span class="greska" id="kolicina-greska">Unesite ispravnu količinu.</span>
+        </p>
+
+        <p class="polje">
+          <label for="datum">Datum očitanja *</label>
+          <input type="date" id="datum" name="datum" data-testid="datum" min="2026-01-01" max="2026-12-31" required aria-describedby="datum-pomoc datum-greska">
+          <span class="pomoc" id="datum-pomoc">Dozvoljeni su datumi iz 2026. godine.</span>
+          <span class="greska" id="datum-greska">Unesite datum iz 2026. godine.</span>
+        </p>
+
+        <p class="checkbox-polje">
+          <input type="checkbox" id="incident" name="incident" value="da" data-testid="incident">
+          <label for="incident">Hitna intervencija / Incident</label>
+        </p>
+
+        <button type="submit" data-testid="submit">Spremi mjerenje</button>
+      </form>
+
+      <div id="poruke" class="poruke" role="status" aria-live="polite" data-testid="poruke"></div>
+    </section>
+
+    <section id="historija">
+      <h2>Historija mjerenja</h2>
+
+      <figure class="tabela-scroll">
+
+        <table data-testid="tabela">
+          <caption>Mjerenja potrošnje energenata u 2026. godini</caption>
+          <thead>
+
+            <tr>
+              <th scope="col" data-polje="datum">Datum</th>
+              <th scope="col" data-polje="energent">Energent</th>
+              <th scope="col" data-polje="kolicina">Količina</th>
+              <th scope="col" data-polje="jedinica">Jedinica</th>
+              <th scope="col" data-polje="incident">Incident</th>
+              <th scope="col">Akcije</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+            <tr><th scope="row">2026-01-01</th><td>Struja</td><td>123,30</td><td>kWh</td><td>Ne</td></tr>
+            <tr><th scope="row">2026-02-02</th><td>Plin</td><td>321,89</td><td>m³</td><td>Ne</td></tr>
+            <tr><th scope="row">2026-03-03</th><td>Voda</td><td>456,70</td><td>m³</td><td>Ne</td></tr>
+            <tr><th scope="row">2026-04-21</th><td>Struja</td><td>654,10</td><td>kWh</td><td>Ne</td></tr>
+            <tr><th scope="row">2026-05-05</th><td>Plin</td><td>753,00</td><td>m³</td><td>Da</td></tr>
+            <tr><th scope="row">2026-06-06</th><td>Voda</td><td>45,45</td><td>m³</td><td>Ne</td></tr>
+            <tr><th scope="row">2026-07-07</th><td>Struja</td><td>597,97</td><td>kWh</td><td>Ne</td></tr>
+            <tr><th scope="row">2026-08-08</th><td>Plin</td><td>64,67</td><td>m³</td><td>Ne</td></tr>
+            <tr><th scope="row">2026-09-09</th><td>Voda</td><td>15,10</td><td>m³</td><td>Da</td></tr>
+            <tr><th scope="row">2026-10-10</th><td>Struja</td><td>334,45</td><td>kWh</td><td>Ne</td></tr>
+            <tr><th scope="row">2026-11-11</th><td>Plin</td><td>20,40</td><td>m³</td><td>Ne</td></tr>
+            <tr><th scope="row">2026-12-12</th><td>Voda</td><td>14,45</td><td>m³</td><td>Ne</td></tr>
+          </tbody>
+
+        </table>
+      </figure>
+    </section>
+  </main>
+
+  <aside>
+    <section>
+
+      <h2>Savjeti za uštedu</h2>
+
+      <ul>
+        <li>Generalni savjeti korisniku za uštedu.</li>
+      </ul>
+
+    </section>
+
+    <section>
+      <h2>Podsjetnik</h2>
+      <p>Podsjetnici za korisnika.</p>
+    </section>
+
+    <section id="moj-profil">
+      <h2>Moj profil</h2>
+      <p>Prikaz informacija o profilu korisnika.</p>
+    </section>
+
+    <section id="postavke-racuna">
+      <h2>Postavke računa</h2>
+      <p>Informacije o postavkama korisničkog računa.</p>
+    </section>
+
+  </aside>
+
+  <footer>
+    <p>2026 EcoTrack. Bakir Masovic - spirala 2.</p>
+  </footer>
+
+  <script src="js/Evidencija.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
